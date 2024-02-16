@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace Muhasebem;
 
@@ -12,6 +13,7 @@ public static class MauiProgram
             .UseMauiCommunityToolkit()
             .UseUraniumUI()
             .UseUraniumUIMaterial()
+            .UseSkiaSharp()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -24,6 +26,7 @@ public static class MauiProgram
 
         builder.Services
             .AddSingleton<App>()
+            .AddSingleton<AppShell>()
             .AddScoped<IUserRepository, UserRepository>()
             .AddScopedWithShellRoute<LoginPage, LoginPageViewModel>($"//{nameof(LoginPage)}");
 

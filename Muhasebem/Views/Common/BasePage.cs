@@ -14,18 +14,9 @@ public abstract class BasePage<TViewModel> : ContentPage where TViewModel : Base
 
     public abstract void Build();
 
-    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    protected override void OnAppearing()
     {
-        base.OnNavigatedTo(args);
-        Build();
-#if DEBUG
-        HotReloadHandler.UpdateApplicationEvent += ReloadUI;
-#endif
-    }
-
-    protected override void OnNavigatingFrom(NavigatingFromEventArgs args)
-    {
-        base.OnNavigatingFrom(args);
+        base.OnAppearing();
 #if DEBUG
         HotReloadHandler.UpdateApplicationEvent += ReloadUI;
 #endif

@@ -57,7 +57,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Raw\error.json" />
+	  <None Remove="Resources\Raw\iconapp.json" />
+	  <None Remove="Resources\Raw\info.json" />
+	  <None Remove="Resources\Raw\warning.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="FmgLib.MauiMarkup" Version="8.*" />
+		<PackageReference Include="FmgLib.MauiMarkup.SkiaSharp" Version="8.0.6" />
 		<PackageReference Include="FmgLib.MauiMarkup.UraniumUI" Version="8.0.6-prev2" />
 		<PackageReference Include="FmgLib.MauiMarkup.Views" Version="8.*" />
 		<PackageReference Include="LiteDB" Version="5.0.17" />

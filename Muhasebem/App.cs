@@ -6,6 +6,6 @@ public partial class App : Application
     {
         this
             .ResourcesFmg(AppStyles.Default)
-            .MainPageFmg(services.GetService<LoginPage>());
+            .MainPageFmg(services.GetService<AppShell>());
     }
 }

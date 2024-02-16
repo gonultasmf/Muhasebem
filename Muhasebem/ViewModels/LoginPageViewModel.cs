@@ -16,7 +16,7 @@ public partial class LoginPageViewModel(IUserRepository repository) : BaseViewMo
 
         if (result is null)
         {
-            await Shell.Current.ShowPopupAsync(new MyPopup());
+            await Shell.Current.ShowPopupAsync(new MyPopup(PopupType.Warning, "BİLGİ", "Mail veya Şifre Yanlış Girildi."));
         }
         else
         {

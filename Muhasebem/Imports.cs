@@ -12,6 +12,7 @@ global using CommunityToolkit.Mvvm.Messaging;
 global using FmgLib.MauiMarkup;
 global using FmgLib.MauiMarkup.Views;
 global using FmgLib.MauiMarkup.UraniumUI;
+global using FmgLib.MauiMarkup.SkiaSharp;
 global using Muhasebem;
 global using Muhasebem.ViewModels;
 global using Muhasebem.Views;
@@ -23,8 +24,11 @@ global using Muhasebem.DTOs;
 global using Muhasebem.Controls;
 // Static
 global using static Microsoft.Maui.Graphics.Colors;
+global using static Microsoft.Maui.Controls.FontAttributes;
 global using MC = Microsoft.Maui.Controls;
+global using Uranium = UraniumUI.Material.Controls;
 
 global using LiteDB;
 global using UraniumUI;
 global using UraniumUI.Material.Controls;
+global using SkiaSharp.Extended.UI.Controls;
