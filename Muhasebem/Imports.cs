@@ -22,6 +22,7 @@ global using Muhasebem.Context;
 global using Muhasebem.Repositories;
 global using Muhasebem.DTOs;
 global using Muhasebem.Controls;
+global using Muhasebem.Helpers;
 // Static
 global using static Microsoft.Maui.Graphics.Colors;
 global using static Microsoft.Maui.Controls.FontAttributes;

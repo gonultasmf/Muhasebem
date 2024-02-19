@@ -16,11 +16,18 @@ public partial class LoginPageViewModel(IUserRepository repository) : BaseViewMo
 
         if (result is null)
         {
-            await Shell.Current.ShowPopupAsync(new MyPopup(PopupType.Warning, "BİLGİ", "Mail veya Şifre Yanlış Girildi."));
+            await Shell.Current.ShowPopupAsync(new MyPopup(PopupType.Error, "HATA", "Mail veya Şifre Yanlış Girildi."));
         }
         else
         {
-            // Ana sayfaya git
+            if (LoginModel.IsRememberMe)
+            {
+                var expireTime = DateTime.Now.AddDays(14);
+                var auth = AuthCheckHelper.BasicAuth(result.Email, result.Password, expireTime);
+                await SecureStorage.SetAsync("USERAUTH", auth);
+            }
+
+            await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
         }
     });
 }

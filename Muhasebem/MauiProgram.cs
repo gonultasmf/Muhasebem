@@ -27,8 +27,10 @@ public static class MauiProgram
         builder.Services
             .AddSingleton<App>()
             .AddSingleton<AppShell>()
+            .AddSingleton<Initilazer>()
             .AddScoped<IUserRepository, UserRepository>()
-            .AddScopedWithShellRoute<LoginPage, LoginPageViewModel>($"//{nameof(LoginPage)}");
+            .AddScopedWithShellRoute<LoginPage, LoginPageViewModel>($"//{nameof(LoginPage)}")
+            .AddScopedWithShellRoute<HomePage, HomePageViewModel>($"//{nameof(HomePage)}");
 
         return builder.Build();
     }

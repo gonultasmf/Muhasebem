@@ -12,17 +12,19 @@ public partial class MyPopup : Popup
             new Grid()
             .WidthRequestFmg(250)
             .HeightRequestFmg(175)
+            .PaddingFmg(0)
             .ChildrenFmg(
                 new Frame()
                 .CornerRadiusFmg(25)
                 .BackgroundColorFmg(DarkGray)
                 .BorderColorFmg(DarkGray)
                 .FillBothDirectionsFmg()
+                .PaddingFmg(0)
                 .ContentFmg(
                     new Grid()
                     .ColumnDefinitionsFmg(e => e.Star(3).Star(7))
                     .RowDefinitionsFmg(e => e.Star(2).Star(6).Star(2))
-                    .RowSpanFmg(10)
+                    .SpacingFmg(10)
                     .FillBothDirectionsFmg()
                     .MarginFmg(10)
                     .PaddingFmg(0)
@@ -34,7 +36,8 @@ public partial class MyPopup : Popup
                         .TextColorFmg(White)
                         .CenterFmg()
                         .RowFmg(0)
-                        .ColumnFmg(1),
+                        .ColumnFmg(0)
+                        .ColumnSpanFmg(2),
 
                         new Label()
                         .TextFmg(description)
@@ -59,7 +62,7 @@ public partial class MyPopup : Popup
                         .ColumnSpanFmg(2)
                         .RowFmg(2)
                         .SpacingFmg(10)
-                        .FillHorizontalFmg()
+                        .CenterHorizontalFmg()
                         .ChildrenFmg(
                             new Button()
                             .TextFmg(cancelBtnTxt)
@@ -68,9 +71,11 @@ public partial class MyPopup : Popup
                             .WidthRequestFmg(100)
                             .IsVisibleFmg(pType == PopupType.Warning)
                             .BackgroundColorFmg(CadetBlue)
+                            .PaddingFmg(0)
+                            .HeightRequestFmg(27)
                             .OnClickedFmg(async (sender, e) =>
                             {
-                                await CloseAsync();
+                                await CloseAsync(false);
                             }),
 
                             new Button()
@@ -82,15 +87,12 @@ public partial class MyPopup : Popup
                             .BackgroundColorFmg(CadetBlue)
                             .AlignEndFmg()
                             .PaddingFmg(0)
+                            .HeightRequestFmg(27)
                             .OnClickedFmg(async (sender, e) =>
                             {
-                                await CloseAsync();
+                                await CloseAsync(true);
                             })
                         )
-
-
-                        
-
                     )
                 )
             )
