@@ -300,12 +300,13 @@ public class AppStyles
 
         new Style<Page>(applyToDerivedTypes: true, e => e
             .PaddingFmg(0)
-            .BackgroundColorFmg(e => e.OnLightFmg(Colors.White).OnDarkFmg(Colors.Black))),
+            .BackgroundColorFmg(e => e.OnLightFmg(Colors.Black).OnDarkFmg(Colors.Black))),
     
         // "Shell"
 
         new Style<Shell>(applyToDerivedTypes: true, e => e
             .ShellNavBarHasShadowFmg(false)
+            .ShellNavBarIsVisibleFmg(false)
             .ShellBackgroundColorFmg(e => e.OnLightFmg(AppColors.Primary).OnDarkFmg(AppColors.Gray950))
             .ShellForegroundColorFmg(e => e.OnLightFmg(AppColors.Primary).OnDarkFmg(Colors.White))
             .ShellTitleColorFmg(e => e.OnLightFmg(Colors.White).OnDarkFmg(Colors.White))

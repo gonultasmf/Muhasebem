@@ -12,6 +12,7 @@ public partial class HomePage(HomePageViewModel viewModel) : BasePage<HomePageVi
                 new Label()
                 .TextFmg("ANA SAYFA")
                 .FontSizeFmg(25)
+                .TextColorFmg(White)
             )
         );
     }

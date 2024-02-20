@@ -4,21 +4,36 @@ namespace Muhasebem.Views;
 
 public partial class LoginPage(LoginPageViewModel viewModel) : BasePage<LoginPageViewModel>(viewModel, "Giriş Sayfası")
 {
-    public override void Build()
+    bool isCheckLogin = false;
+    public override async void Build()
     {
+        isCheckLogin = await CheckLogin();
         this
         .ShellNavBarIsVisibleFmg(false)
         .BackgroundColorFmg(Black)
+        .OnLoadedFmg(async(sender, e) =>
+        {
+            if (isCheckLogin)
+                await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+        })
         .ContentFmg(
             new Grid()
             .RowDefinitionsFmg(e => e.Star(3).Star(4).Star(3))
             .FillBothDirectionsFmg()
             .ChildrenFmg(
+                new ActivityIndicator()
+                .IsRunningFmg(isCheckLogin)
+                .IsVisibleFmg(isCheckLogin)
+                .RowSpanFmg(3)
+                .CenterFmg()
+                .SizeRequestFmg(75, 75),
+
                 new SKLottieView()
                 .SourceFmg(new SKFileLottieImageSource().FileFmg("iconapp.json"))
                 .RepeatCountFmg(-1)
                 .HeightRequestFmg(250)
-                .WidthRequestFmg(250),
+                .WidthRequestFmg(250)
+                .IsVisibleFmg(!isCheckLogin),
 
                 new Border()
                 .StrokeShapeFmg(new RoundRectangle().CornerRadiusFmg(new CornerRadius(35,35,35,35)))
@@ -27,6 +42,7 @@ public partial class LoginPage(LoginPageViewModel viewModel) : BasePage<LoginPag
                 .PaddingFmg(new Thickness(20,5))
                 .MarginFmg(20)
                 .RowFmg(1)
+                .IsVisibleFmg(!isCheckLogin)
                 .ContentFmg(
                     new VerticalStackLayout()
                     .AlignStartFmg()
@@ -67,6 +83,23 @@ public partial class LoginPage(LoginPageViewModel viewModel) : BasePage<LoginPag
                 )
             )
         );
+    }
 
+    private async Task<bool> CheckLogin()
+    {
+        var auth = await SecureStorage.GetAsync("USERAUTH");
+
+        if(string.IsNullOrEmpty(auth))
+            return false;
+
+        var info = AuthCheckHelper.ParseBasicAuthToken(auth);
+        if(info.Item3.Value.Date < DateTime.Now.Date)
+        {
+            SecureStorage.Remove("USERAUTH");
+
+            return false;
+        }
+
+        return true;
     }
 }
