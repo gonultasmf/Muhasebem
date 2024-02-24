@@ -21,10 +21,10 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>FmgLibProjectTemplate</ApplicationTitle>
+		<ApplicationTitle>Muhasebem</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.fmglibprojecttemplate</ApplicationId>
+		<ApplicationId>com.companyname.muhasebem</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -57,6 +57,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\accounting.png" />
+	  <None Remove="Resources\Images\home.png" />
+	  <None Remove="Resources\Images\page.png" />
+	  <None Remove="Resources\Images\setting.png" />
+	  <None Remove="Resources\Images\user.png" />
 	  <None Remove="Resources\Raw\error.json" />
 	  <None Remove="Resources\Raw\iconapp.json" />
 	  <None Remove="Resources\Raw\info.json" />
@@ -65,10 +70,11 @@
 
 	<ItemGroup>
 		<PackageReference Include="FmgLib.MauiMarkup" Version="8.*" />
-		<PackageReference Include="FmgLib.MauiMarkup.SkiaSharp" Version="8.0.6" />
-		<PackageReference Include="FmgLib.MauiMarkup.UraniumUI" Version="8.0.6-prev2" />
+		<PackageReference Include="FmgLib.MauiMarkup.SimpleToolkit" Version="8.0.7" />
+		<PackageReference Include="FmgLib.MauiMarkup.SkiaSharp" Version="8.0.7" />
+		<PackageReference Include="FmgLib.MauiMarkup.UraniumUI" Version="8.0.7-prev2" />
 		<PackageReference Include="FmgLib.MauiMarkup.Views" Version="8.*" />
-		<PackageReference Include="LiteDB" Version="5.0.17" />
+		<PackageReference Include="LiteDB" Version="5.0.19" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.*" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.*" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.*" />

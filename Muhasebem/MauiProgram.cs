@@ -14,6 +14,8 @@ public static class MauiProgram
             .UseUraniumUI()
             .UseUraniumUIMaterial()
             .UseSkiaSharp()
+            .UseSimpleToolkit()
+            .UseSimpleShell()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -30,6 +32,10 @@ public static class MauiProgram
             .AddSingleton<Initilazer>()
             .AddScoped<IUserRepository, UserRepository>()
             .AddScopedWithShellRoute<LoginPage, LoginPageViewModel>($"//{nameof(LoginPage)}")
+            .AddScopedWithShellRoute<OperationsPage, OperationsPageViewModel>($"//{nameof(OperationsPage)}")
+            .AddScopedWithShellRoute<DashboardPage, DashboardPageViewModel>($"//{nameof(DashboardPage)}")
+            .AddScopedWithShellRoute<AccountPage, AccountPageViewModel>($"//{nameof(AccountPage)}")
+            .AddScopedWithShellRoute<SettingsPage, SettingsPageViewModel>($"//{nameof(SettingsPage)}")
             .AddScopedWithShellRoute<HomePage, HomePageViewModel>($"//{nameof(HomePage)}");
 
         return builder.Build();

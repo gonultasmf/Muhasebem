@@ -16,7 +16,7 @@ public partial class LoginPageViewModel(IUserRepository repository) : BaseViewMo
 
         if (result is null)
         {
-            await Shell.Current.ShowPopupAsync(new MyPopup(PopupType.Error, "HATA", "Mail veya Şifre Yanlış Girildi."));
+            await Application.Current.MainPage.ShowPopupAsync(new MyPopup(PopupType.Error, "HATA", "Mail veya Şifre Yanlış Girildi."));
         }
         else
         {
@@ -27,7 +27,7 @@ public partial class LoginPageViewModel(IUserRepository repository) : BaseViewMo
                 await SecureStorage.SetAsync("USERAUTH", auth);
             }
 
-            await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+            Application.Current.MainPage = new AppShell();
         }
     });
 }

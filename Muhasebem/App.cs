@@ -7,6 +7,6 @@ public partial class App : Application
         _ = services.GetService<Initilazer>();
         this
             .ResourcesFmg(AppStyles.Default)
-            .MainPageFmg(services.GetService<AppShell>());
+            .MainPageFmg(services.GetService<LoginPage>());
     }
 }

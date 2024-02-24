@@ -11,10 +11,11 @@ public partial class LoginPage(LoginPageViewModel viewModel) : BasePage<LoginPag
         this
         .ShellNavBarIsVisibleFmg(false)
         .BackgroundColorFmg(Black)
-        .OnLoadedFmg(async(sender, e) =>
+        .OnLoadedFmg((sender, e) =>
         {
             if (isCheckLogin)
-                await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+                Application.Current.MainPage = new AppShell();
+                //await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
         })
         .ContentFmg(
             new Grid()
